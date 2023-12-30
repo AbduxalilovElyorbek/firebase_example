@@ -1,0 +1,5 @@
+class ScreenRoutes {
+  var screenRoute = {
+    
+  };
+}
