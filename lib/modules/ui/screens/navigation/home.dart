@@ -1,8 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
 
-import 'package:firebase_example/modules/ui/screens/calls/calls_page.dart';
-import 'package:firebase_example/modules/ui/screens/contacts/contact_page.dart';
-import 'package:firebase_example/modules/ui/screens/settings/settings_screen.dart';
 
 class NavigationBarScreen extends StatefulWidget {
   static const String routeName = "navigation/screen";
@@ -40,13 +37,13 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
     return Scaffold(
       body: pages[index],
       bottomNavigationBar: BottomNavigationBar(
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 16,
+        unselectedLabelStyle: TextStyle(
+          fontSize: 16.sp,
           fontWeight: FontWeight.w400,
         ),
         unselectedItemColor: grey,
-        selectedLabelStyle: const TextStyle(
-          fontSize: 16,
+        selectedLabelStyle:  TextStyle(
+          fontSize: 16.sp,
           fontWeight: FontWeight.w400,
         ),
         selectedItemColor: green,

@@ -1,15 +1,13 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/chat/widgets/item.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ChatItems extends StatelessWidget {
   const ChatItems({super.key});
 
+  static String imageUrl = '';
+  static String imagePath = '';
+
   @override
   Widget build(BuildContext context) {
-    String imageUrl = '';
-
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -20,7 +18,7 @@ class ChatItems extends StatelessWidget {
       padding: const EdgeInsets.all(
         24,
       ),
-      height: 320,
+      height: 400,
       width: double.infinity,
       child: Column(
         children: [
@@ -35,10 +33,10 @@ class ChatItems extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              const Text(
+               Text(
                 "Share Content",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -65,16 +63,18 @@ class ChatItems extends StatelessWidget {
               Reference ref = FirebaseStorage.instance.ref();
               Reference imageRef = ref.child('images/');
 
-              Reference upload = imageRef.child('${file!.name}');
+              Reference upload = imageRef.child(file!.name);
 
               try {
-                upload.putFile(
+                await upload.putFile(
                   File(file.path),
                 );
+
+                print(file.path + '   path');
                 imageUrl = await upload.getDownloadURL();
-              } catch (e) {
-                print(e);
-              }
+
+                imagePath = file.path;
+              } catch (e) {}
             },
           ),
           const SizedBox(
@@ -87,6 +87,24 @@ class ChatItems extends StatelessWidget {
           Item(
             icon: AppIcons.medItem,
             title: "Photos",
+            function: () async {
+              final image = ImagePicker();
+              XFile? file = await image.pickImage(
+                source: ImageSource.gallery,
+              );
+
+              Reference ref = FirebaseStorage.instance.ref();
+              Reference imageRef = ref.child('images/');
+
+              Reference upload = imageRef.child(file!.name);
+
+              try {
+                upload.putFile(
+                  File(file.path),
+                );
+                imagePath = file.path;
+              } catch (e) {}
+            },
           ),
           const SizedBox(
             height: 10,
@@ -97,7 +115,24 @@ class ChatItems extends StatelessWidget {
           ),
           Item(
             icon: AppIcons.medItem,
-            title: "Photos",
+            title: "Videos",
+            function: () async {
+              final image = ImagePicker();
+              XFile? file = await image.pickVideo(
+                source: ImageSource.gallery,
+              );
+
+              Reference ref = FirebaseStorage.instance.ref();
+              Reference imageRef = ref.child('videos/');
+
+              Reference upload = imageRef.child(file!.name);
+
+              try {
+                await upload.putFile(
+                  File(file.path),
+                );
+              } catch (e) {}
+            },
           ),
         ],
       ),

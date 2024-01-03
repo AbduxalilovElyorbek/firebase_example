@@ -11,18 +11,9 @@ class SearchList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _user = FirebaseAuth.instance.currentUser!;
-    final _storage = FirebaseFirestore.instance
-        .collection('chats')
-        .where(
-          'getterUid',
-          isEqualTo: _user.uid,
-        )
-        .where(
-          'name',
-          isEqualTo: searchName,
-        )
-        .snapshots();
+    // final _user = FirebaseAuth.instance.currentUser!;
+    final dynamic _storage =
+        FirebaseFirestore.instance.collection('users').snapshots();
 
     return StreamBuilder<QuerySnapshot>(
       stream: _storage,
@@ -30,8 +21,13 @@ class SearchList extends StatelessWidget {
         if (snapshot.data != null && snapshot.hasData) {
           var data = snapshot.data!.docs;
 
-          return ListView.builder(
+          return ListView.separated(
             itemCount: data.length,
+            separatorBuilder: (context, index) {
+              return const SizedBox(
+                height: 12,
+              );
+            },
             itemBuilder: (context, index) {
               var doc = data[index].data() as Map<String, dynamic>;
 

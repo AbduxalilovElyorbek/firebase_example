@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class MyMessages extends StatelessWidget {
   const MyMessages({
@@ -19,7 +17,6 @@ class MyMessages extends StatelessWidget {
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
-          
           children: [
             Container(
               padding: const EdgeInsets.symmetric(
@@ -38,7 +35,7 @@ class MyMessages extends StatelessWidget {
               child: Text(
                 message,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                   color: white,
                 ),
@@ -49,7 +46,7 @@ class MyMessages extends StatelessWidget {
               child: Text(
                 "${date.toDate().hour} : ${date.toDate().minute}",
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
                   color: time,
                 ),

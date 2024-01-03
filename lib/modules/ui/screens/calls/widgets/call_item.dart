@@ -1,17 +1,13 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/calls/widgets/call.dart';
-import 'package:firebase_example/modules/ui/screens/profile/profile_screen.dart';
 
 class CallItemWidget extends StatelessWidget {
   const CallItemWidget({
     super.key,
     required this.userName,
     required this.userUid,
-    required this.getterUid,
   });
   final String userName;
   final String userUid;
-  final String getterUid;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +28,7 @@ class CallItemWidget extends StatelessWidget {
                         userName: userName,
                         userEmail: 'user.email!',
                         userNumber: 'user.phoneNumber',
-                        uid: getterUid,
+                        uid: userUid,
                       ),
                     ),
                   );
@@ -43,8 +39,8 @@ class CallItemWidget extends StatelessWidget {
               ),
               Text(
                 userName,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -52,42 +48,58 @@ class CallItemWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => Call(
-                        isVideo: false,
-                        userName:
-                            FirebaseAuth.instance.currentUser!.displayName!,
-                        userId: FirebaseAuth.instance.currentUser!.uid,
-                        callID: getterUid,
-                      ),
-                    ),
-                  );
-                },
-                icon: SvgPicture.asset(
-                  AppIcons.call,
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => Call(
-                        userName:
-                            FirebaseAuth.instance.currentUser!.displayName!,
-                        isVideo: true,
-                        userId: FirebaseAuth.instance.currentUser!.uid,
-                        callID: "1",
-                      ),
-                    ),
-                  );
-                },
-                icon: SvgPicture.asset(
-                  AppIcons.videoIcon,
-                ),
-              ),
+              ZegoSendCallInvitationButton(
+                isVideoCall: true,
+                resourceID:
+                    "zegouikit_call", //You need to use the resourceID that you created in the subsequent steps. Please continue reading this document.
+                invitees: [
+                  ZegoUIKitUser(
+                    id: FirebaseAuth.instance.currentUser!.uid,
+                    name: FirebaseAuth.instance.currentUser!.displayName!,
+                  ),
+                  ZegoUIKitUser(
+                    id: userUid,
+                    name: userUid,
+                  ),
+                ],
+              )
+
+              // IconButton(
+              //   onPressed: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(
+              //         builder: (context) => Call(
+              //           isVideo: false,
+              //           userName:
+              //               FirebaseAuth.instance.currentUser!.displayName!,
+              //           userId: FirebaseAuth.instance.currentUser!.uid,
+              //           callID: getterUid,
+              //         ),
+              //       ),
+              //     );
+              //   },
+              //   icon: SvgPicture.asset(
+              //     AppIcons.call,
+              //   ),
+              // ),
+              // IconButton(
+              //   onPressed: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(
+              //         builder: (context) => Call(
+              //           userName:
+              //               FirebaseAuth.instance.currentUser!.displayName!,
+              //           isVideo: true,
+              //           userId: FirebaseAuth.instance.currentUser!.uid,
+              //           callID: "1",
+              //         ),
+              //       ),
+              //     );
+              //   },
+              //   icon: SvgPicture.asset(
+              //     AppIcons.videoIcon,
+              //   ),
+              // ),
             ],
           ),
         ],

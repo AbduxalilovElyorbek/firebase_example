@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_example/core/exception/failure.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 typedef ResultFuture<T> = Future<Either<Failure, T>>;
 typedef DataMap = Map<String, dynamic>;

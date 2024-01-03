@@ -1,6 +1,4 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class IconWidget extends StatelessWidget {
   const IconWidget({

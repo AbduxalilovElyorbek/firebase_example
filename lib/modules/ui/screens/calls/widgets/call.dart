@@ -1,6 +1,4 @@
-import 'package:firebase_example/core/untils/call_items.dart';
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
 class Call extends StatelessWidget {
   const Call({

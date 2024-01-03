@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/domain/usecase/register/register.dart';
 
 class SignUpPage extends StatefulWidget {
   static const routeName = "sign/up";
@@ -47,6 +46,9 @@ class _SignUpPageState extends State<SignUpPage> {
           icon: AppIcons.back,
           color: transparent,
           isBordered: false,
+          function: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Form(
@@ -59,26 +61,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 50,
               ),
               Center(
-                child: RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: dark,
-                    ),
-                    children: [
-                      const TextSpan(
-                        text: 'Sign up ',
-                      ),
-                      TextSpan(
-                        text: 'Email',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 8,
-                          decorationColor: lineColor,
-                        ),
-                      ),
-                    ],
+                child: Text(
+                  "Sign Up Email",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -89,7 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 "Get chatting with friends and family today by \n signing up for our chat app!",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                   color: grey,
                 ),

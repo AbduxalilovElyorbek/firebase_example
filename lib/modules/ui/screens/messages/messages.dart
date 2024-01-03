@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/search/search_page.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({
@@ -26,12 +25,12 @@ class _MessagesPageState extends State<MessagesPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        toolbarHeight: 70,
+        toolbarHeight: 60.w,
         backgroundColor: transparent,
         title: Column(
           children: [
-            const SizedBox(
-              height: 17,
+            SizedBox(
+              height: 12.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,25 +49,15 @@ class _MessagesPageState extends State<MessagesPage> {
                 Text(
                   "Home",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     color: white,
                   ),
                 ),
                 Avatar(
                   size: 44,
-                  function: () {
-                    // Navigator.pushNamed(context, ProfilePage.routeName);
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => ProfilePage(
-                    //       userName: user.displayName!,
-                    //       userEmail: user.email!,
-                    //       userNumber: user.phoneNumber,
-                    //     ),
-                    //   ),
-                    // );
+                  function: () async {
+                    await FirebaseAuth.instance.signOut();
                   },
                   user: user.displayName!,
                 )
@@ -80,11 +69,11 @@ class _MessagesPageState extends State<MessagesPage> {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(
-              top: 40,
-              bottom: 30,
+            margin: EdgeInsets.only(
+              top: 20.h,
+              bottom: 30.h,
             ),
-            height: 82,
+            height: 100,
             width: double.infinity,
             child: Profiles(),
           ),

@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+
+import 'package:firebase_example/core/untils/imports.dart';
 
 Color white = const Color(0xffFFFFFF);
 Color lightWhite = const Color(0xffD6E4E0);

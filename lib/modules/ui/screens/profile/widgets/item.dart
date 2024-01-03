@@ -1,8 +1,7 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
-class Item extends StatelessWidget {
-  const Item({
+class ItemProfile extends StatelessWidget {
+  const ItemProfile({
     super.key,
     this.text,
     required this.title,
@@ -20,7 +19,7 @@ class Item extends StatelessWidget {
             title,
             style: TextStyle(
               color: lightWhite,
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -31,7 +30,7 @@ class Item extends StatelessWidget {
             text!,
             style: TextStyle(
               color: dark,
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
             ),
           ),

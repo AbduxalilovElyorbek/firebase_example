@@ -1,4 +1,3 @@
-import 'package:firebase_example/constants/images/image.dart';
 import 'package:firebase_example/core/untils/imports.dart';
 
 class Avatar extends StatelessWidget {
@@ -35,8 +34,8 @@ class Avatar extends StatelessWidget {
                 child: Center(
                   child: Text(
                     user[0],
-                    style: const TextStyle(
-                      fontSize: 18,
+                    style: TextStyle(
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

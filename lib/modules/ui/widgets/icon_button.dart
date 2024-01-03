@@ -7,11 +7,13 @@ class IconButtonWidget extends StatelessWidget {
     required this.color,
     required this.isBordered,
     this.function,
+    this.iconColor,
   });
   final String icon;
   final Color color;
   final bool isBordered;
   final VoidCallback? function;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +37,6 @@ class IconButtonWidget extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             icon,
-            colorFilter: ColorFilter.mode(
-              color == transparent ? dark : white,
-              BlendMode.srcIn,
-            ),
           ),
         ),
       ),

@@ -26,23 +26,6 @@ class LoginEvent extends AuthEvent {
       ];
 }
 
-class ContactEvent extends AuthEvent {
-  final String getterUid;
-  final String message;
-  final String getterName;
-
-  const ContactEvent({
-    required this.getterUid,
-    required this.message,
-    required this.getterName,
-  });
-
-  @override
-  List<Object?> get props => [
-        getterUid,
-      ];
-}
-
 class AuthWithGoogle extends AuthEvent {
   const AuthWithGoogle();
 

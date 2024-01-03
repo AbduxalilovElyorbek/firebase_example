@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/calls/widgets/call_item.dart';
 
 class Calls extends StatelessWidget {
   const Calls({super.key});
@@ -31,7 +30,6 @@ class Calls extends StatelessWidget {
                   return CallItemWidget(
                     userUid: doc['senderUid'],
                     userName: doc['senderName'],
-                    getterUid: doc['getterUid'],
                   );
                 }
                 return const SizedBox();

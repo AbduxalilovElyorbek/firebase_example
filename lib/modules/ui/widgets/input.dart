@@ -20,7 +20,7 @@ class InputWidget extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             color: green,
           ),

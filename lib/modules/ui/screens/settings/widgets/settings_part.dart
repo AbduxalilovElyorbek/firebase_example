@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:flutter/material.dart';
 
 class SettingsProfile extends StatelessWidget {
   const SettingsProfile({super.key});
@@ -18,8 +17,8 @@ class SettingsProfile extends StatelessWidget {
         ),
         Text(
           FirebaseAuth.instance.currentUser!.displayName!,
-          style: const TextStyle(
-            fontSize: 20,
+          style: TextStyle(
+            fontSize: 20.sp,
             fontWeight: FontWeight.w600,
           ),
         ),

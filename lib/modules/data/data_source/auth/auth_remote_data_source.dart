@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_example/core/exception/failure.dart';
-import 'package:firebase_example/core/untils/typedef.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_example/core/untils/imports.dart';
+
 
 abstract class AuthRemoteDataSource {
   ResultFuture register({
@@ -57,6 +54,16 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         'email': email,
         "password": password,
       });
+
+      ZegoUIKitPrebuiltCallInvitationService().init(
+        appID: CallItems.appId /*input your AppID*/,
+        appSign: CallItems.appSignIn /*input your AppSign*/,
+        userID: _auth.currentUser!.uid,
+        userName: _auth.currentUser!.displayName!,
+        plugins: [
+          ZegoUIKitSignalingPlugin(),
+        ],
+      );
 
       return const Right(null);
     } catch (e) {

@@ -1,8 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/chat/parts/items.dart';
-import 'package:firebase_example/modules/ui/screens/chat/parts/messages.dart';
-import 'package:firebase_example/modules/ui/screens/messages/widgets/chat_profile.dart';
-import 'package:firebase_example/modules/ui/screens/profile/profile_screen.dart';
+
 
 class Chat extends StatefulWidget {
   static const routeName = "chat/screen";
@@ -40,6 +37,7 @@ class _ChatState extends State<Chat> {
 
   @override
   void dispose() {
+    _controller.dispose();
     _messageController.dispose();
     super.dispose();
   }
@@ -93,7 +91,7 @@ class _ChatState extends State<Chat> {
                 Text(
                   name,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: dark,
                     fontWeight: FontWeight.w500,
                   ),
@@ -104,7 +102,7 @@ class _ChatState extends State<Chat> {
                 Text(
                   "Active now",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: grey,
                     fontWeight: FontWeight.w400,
                   ),
@@ -128,7 +126,7 @@ class _ChatState extends State<Chat> {
           ),
         ],
       ),
-      body: BlocConsumer<AuthBloc, AuthState>(
+      body: BlocConsumer<MessagesBloc, MessagesState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Column(
@@ -207,8 +205,8 @@ class _ChatState extends State<Chat> {
                         ? InkWell(
                             onTap: () {
                               if (_messageController.text != '') {
-                                context.read<AuthBloc>().add(
-                                      ContactEvent(
+                                context.read<MessagesBloc>().add(
+                                      SendMessage(
                                         getterUid: getterUid,
                                         message: _messageController.text,
                                         getterName: name,

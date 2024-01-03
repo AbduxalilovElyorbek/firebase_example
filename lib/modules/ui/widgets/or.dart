@@ -29,7 +29,7 @@ class OrWidget extends StatelessWidget {
             child: Text(
               "OR",
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
                 color: textColor,
               ),

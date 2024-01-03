@@ -1,8 +1,5 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:firebase_example/constants/icons/icons.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 import 'package:firebase_example/modules/ui/screens/search/parts/search_list.dart';
-import 'package:firebase_example/modules/ui/widgets/svg_icon.dart';
-import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

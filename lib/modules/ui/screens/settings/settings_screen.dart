@@ -1,6 +1,4 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:firebase_example/modules/ui/screens/settings/widgets/settings_part.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -16,7 +14,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text(
           "Settings",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w500,
             color: white,
           ),

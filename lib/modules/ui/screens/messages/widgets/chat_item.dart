@@ -1,35 +1,35 @@
-import 'package:firebase_example/modules/ui/screens/messages/widgets/chat_profile.dart';
-import 'package:firebase_example/modules/ui/screens/profile/profile_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class ChatItem extends StatelessWidget {
   const ChatItem({
     super.key,
     required this.name,
-    this.image,
     required this.message,
-    required this.isOnline,
     required this.uid,
+    this.image,
+    this.isOnline,
   });
+
   final String uid;
   final String name;
-  final String? image;
   final String message;
-  final bool isOnline;
+
+  final String? image;
+  final bool? isOnline;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
+      padding: EdgeInsets.symmetric(
+        horizontal: 24.w,
       ),
       child: SizedBox(
-        height: 52,
-        width: 327,
+        height: 52.h,
+        width: 320.w,
         child: Row(
           children: [
             ChatProfile(
-              isActive: isOnline,
+              isActive: isOnline!,
               letter: name[0],
               function: () {
                 Navigator.push(
@@ -53,8 +53,8 @@ class ChatItem extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -68,8 +68,8 @@ class ChatItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     softWrap: false,
-                    style: const TextStyle(
-                      fontSize: 12,
+                    style: TextStyle(
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -77,39 +77,12 @@ class ChatItem extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            Column(
-              children: [
-                Text(
-                  isOnline ? 'Active' : 'Is not Active',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(
-                  height: 7,
-                ),
-                // Container(
-                //   height: 22,
-                //   width: 22,
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(
-                //       50,
-                //     ),
-                //     color: orange,
-                //   ),
-                //   child: Center(
-                //     child: Text(
-                //       "",
-                //       style: TextStyle(
-                //         fontSize: 12,
-                //         fontWeight: FontWeight.w400,
-                //         color: white,
-                //       ),
-                //     ),
-                //   ),
-                // ),
-              ],
+            Text(
+              '',
+              style: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ],
         ),

@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class SendedMessages extends StatelessWidget {
   const SendedMessages({
@@ -44,7 +42,7 @@ class SendedMessages extends StatelessWidget {
                       child: Text(
                         userName[0],
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           color: dark,
                         ),
                       ),
@@ -61,8 +59,8 @@ class SendedMessages extends StatelessWidget {
                 ),
                 Text(
                   userName,
-                  style: const TextStyle(
-                    fontSize: 14,
+                  style: TextStyle(
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -86,7 +84,7 @@ class SendedMessages extends StatelessWidget {
                   child: Text(
                     message,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
                       color: dark,
                     ),

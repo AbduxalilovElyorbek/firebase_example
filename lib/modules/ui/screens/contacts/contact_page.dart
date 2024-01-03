@@ -1,9 +1,5 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:firebase_example/constants/icons/icons.dart';
-import 'package:firebase_example/modules/ui/screens/messages/widgets/icon_widget.dart';
-import 'package:firebase_example/modules/ui/screens/search/search_page.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_example/modules/ui/screens/contacts/parts/contacts.dart';
+import 'package:firebase_example/core/untils/imports.dart';
+
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({super.key});
@@ -28,7 +24,7 @@ class ContactsPage extends StatelessWidget {
                 Text(
                   "Contacts",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     color: white,
                   ),

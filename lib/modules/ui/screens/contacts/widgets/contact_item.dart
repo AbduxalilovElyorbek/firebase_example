@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/profile/profile_screen.dart';
 
 class ContactItemWidget extends StatelessWidget {
   const ContactItemWidget({
@@ -40,8 +39,8 @@ class ContactItemWidget extends StatelessWidget {
               ),
               Text(
                 userName,
-                style: const TextStyle(
-                  fontSize: 18,
+                style:  TextStyle(
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),

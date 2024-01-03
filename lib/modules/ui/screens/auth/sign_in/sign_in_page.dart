@@ -1,4 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInPage extends StatefulWidget {
   static const String routeName = "sign/in";
@@ -55,26 +56,11 @@ class _SignInPageState extends State<SignInPage> {
                 height: 60,
               ),
               Center(
-                child: RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: dark,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'Log in',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 8,
-                          decorationColor: lineColor,
-                        ),
-                      ),
-                      const TextSpan(
-                        text: ' to Chatbox',
-                      ),
-                    ],
+                child: Text(
+                  "Login to ChatBox",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -85,7 +71,7 @@ class _SignInPageState extends State<SignInPage> {
                 "Welcome back! Sign in using your social \n account or email to continue us",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                   color: grey,
                 ),
@@ -228,7 +214,7 @@ class _SignInPageState extends State<SignInPage> {
               Text(
                 "Forgot password?",
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: green,
                   fontWeight: FontWeight.w500,
                 ),

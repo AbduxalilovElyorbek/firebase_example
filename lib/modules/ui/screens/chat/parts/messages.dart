@@ -1,6 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/chat/widgets/my_message.dart';
-import 'package:firebase_example/modules/ui/screens/chat/widgets/send_message.dart';
 
 class Messages extends StatefulWidget {
   const Messages({
@@ -51,53 +49,18 @@ class _MessagesState extends State<Messages> {
 
               if (date != null) {
                 if (doc['uid'] == widget.getterUid + _user.currentUser!.uid) {
-                  return Column(
-                    children: [
-                      // checkDate == today && index == 0
-                      //     ? Container(
-                      //         padding: const EdgeInsets.symmetric(
-                      //           vertical: 5,
-                      //           horizontal: 8,
-                      //         ),
-                      //         color: sendedMessageColor,
-                      //         child: Text(
-                      //           "Today",
-                      //           style: TextStyle(
-                      //             color: dark,
-                      //             fontSize: 12,
-                      //             fontWeight: FontWeight.w500,
-                      //           ),
-                      //         ),
-                      //       )
-                      //     : date == yesterday
-                      //         ? Container(
-                      //             padding: const EdgeInsets.symmetric(
-                      //               vertical: 5,
-                      //               horizontal: 8,
-                      //             ),
-                      //             color: sendedMessageColor,
-                      //             child: Text(
-                      //               "YesterDay",
-                      //               style: TextStyle(
-                      //                 color: dark,
-                      //                 fontSize: 12,
-                      //                 fontWeight: FontWeight.w500,
-                      //               ),
-                      //             ),
-                      //           )
-                      //         : const SizedBox(),
-                      doc['senderUid'] == _user.currentUser!.uid
-                          ? MyMessages(
-                              message: doc['message'],
-                              date: doc['dateTime'],
-                            )
-                          : SendedMessages(
-                              userName: doc['senderName'],
-                              message: doc['message'],
-                              date: doc['dateTime'],
-                            ),
-                    ],
-                  );
+                  if (doc['senderUid'] == _user.currentUser!.uid) {
+                    return MyMessages(
+                      message: doc['message'],
+                      date: doc['dateTime'],
+                    );
+                  } else {
+                    return SendedMessages(
+                      userName: doc['senderName'],
+                      message: doc['message'],
+                      date: doc['dateTime'],
+                    );
+                  }
                 } else if (doc['uid'] ==
                     _user.currentUser!.uid + widget.getterUid) {
                   if (doc['senderUid'] == _user.currentUser!.uid) {

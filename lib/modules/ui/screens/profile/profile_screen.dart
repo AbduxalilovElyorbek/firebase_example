@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/profile/widgets/item.dart';
 
 class ProfilePage extends StatelessWidget {
   static const routeName = "profile/screen";
@@ -30,6 +29,7 @@ class ProfilePage extends StatelessWidget {
         leading: IconButtonWidget(
           icon: AppIcons.back,
           color: transparent,
+          iconColor: white,
           isBordered: true,
           function: () {
             Navigator.pop(context);
@@ -60,8 +60,8 @@ class ProfilePage extends StatelessWidget {
                           child: Center(
                             child: Text(
                               userName[0],
-                              style: const TextStyle(
-                                fontSize: 28,
+                              style: TextStyle(
+                                fontSize: 28.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -73,7 +73,7 @@ class ProfilePage extends StatelessWidget {
                   Text(
                     userName,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                       color: white,
                     ),
@@ -84,7 +84,7 @@ class ProfilePage extends StatelessWidget {
                   Text(
                     userEmail,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
                       color: white,
                     ),
@@ -104,6 +104,7 @@ class ProfilePage extends StatelessWidget {
                   color: darkGreen,
                   isBordered: false,
                   function: () {
+                    Navigator.pop(context);
                     Navigator.pushReplacementNamed(
                       context,
                       Chat.routeName,
@@ -167,21 +168,21 @@ class ProfilePage extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
-                    Item(
+                    ItemProfile(
                       title: 'Display Name',
                       text: userName,
                     ),
                     const SizedBox(
                       height: 30,
                     ),
-                    Item(
+                    ItemProfile(
                       title: 'Email Address',
                       text: userEmail,
                     ),
                     const SizedBox(
                       height: 30,
                     ),
-                    Item(
+                    ItemProfile(
                       title: 'Phone Number',
                       text: userNumber != null && userNumber != ''
                           ? userNumber

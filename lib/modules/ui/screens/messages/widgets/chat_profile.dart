@@ -1,16 +1,15 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class ChatProfile extends StatelessWidget {
   const ChatProfile({
     super.key,
-    required this.isActive,
+    this.isActive,
     this.image,
     this.letter,
     this.function,
   });
 
-  final bool isActive;
+  final bool? isActive;
   final String? image;
   final String? letter;
   final VoidCallback? function;
@@ -33,13 +32,15 @@ class ChatProfile extends StatelessWidget {
                 Positioned(
                   right: 2,
                   bottom: 2,
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(90.0),
-                      color: isActive ? active : grey,
-                    ),
-                  ),
+                  child: isActive != null
+                      ? Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(90.0),
+                            color: isActive! ? active : grey,
+                          ),
+                        )
+                      : Container(),
                 ),
               ])
             : Stack(children: [
@@ -53,8 +54,8 @@ class ChatProfile extends StatelessWidget {
                   child: Center(
                     child: Text(
                       letter![0],
-                      style: const TextStyle(
-                        fontSize: 28,
+                      style: TextStyle(
+                        fontSize: 28.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -63,13 +64,15 @@ class ChatProfile extends StatelessWidget {
                 Positioned(
                   right: 2,
                   bottom: 2,
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(90.0),
-                      color: isActive ? active : grey,
-                    ),
-                  ),
+                  child: isActive != null
+                      ? Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(90.0),
+                            color: isActive! ? active : grey,
+                          ),
+                        )
+                      : Container(),
                 ),
               ]),
       ),

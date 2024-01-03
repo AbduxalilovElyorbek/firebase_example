@@ -1,9 +1,4 @@
-import 'package:firebase_example/constants/colors/colors.dart';
-import 'package:firebase_example/constants/icons/icons.dart';
-import 'package:firebase_example/modules/ui/screens/calls/parts/calls.dart';
-import 'package:firebase_example/modules/ui/screens/messages/widgets/icon_widget.dart';
-import 'package:firebase_example/modules/ui/screens/search/search_page.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_example/core/untils/imports.dart';
 
 class CallsPage extends StatelessWidget {
   const CallsPage({super.key});
@@ -28,7 +23,7 @@ class CallsPage extends StatelessWidget {
                 Text(
                   "Calls",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     color: white,
                   ),
