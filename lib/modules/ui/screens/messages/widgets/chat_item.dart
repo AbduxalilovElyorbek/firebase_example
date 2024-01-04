@@ -58,24 +58,26 @@ class ChatItem extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(
-                  height: 6,
-                ),
                 message != null
-                    ? SizedBox(
-                        width: 100.w,
-                        child: Text(
-                          message!,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          softWrap: false,
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
+                    ? Padding(
+                        padding: EdgeInsets.only(
+                          top: 6.h,
+                        ),
+                        child: SizedBox(
+                          width: 100.w,
+                          child: Text(
+                            message!,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            softWrap: false,
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       )
-                    : Container(),
+                    : const SizedBox(),
               ],
             ),
             const Spacer(),
