@@ -35,4 +35,11 @@ class AppIcons {
 
   static String camItem = 'assets/icons/cam_item.svg';
   static String medItem = 'assets/icons/med_item.svg';
+
+  static String key = 'assets/icons/key.svg';
+  static String notifications = 'assets/icons/notifications.svg';
+  static String help = 'assets/icons/help.svg';
+  static String data = 'assets/icons/data.svg';
+  static String invite = 'assets/icons/invite.svg';
+  static String messageIcon = 'assets/icons/message_icon.svg';
 }

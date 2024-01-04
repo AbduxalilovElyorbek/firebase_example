@@ -58,7 +58,7 @@ export 'package:get_it/get_it.dart';
 
 export 'package:firebase_example/core/untils/typedef.dart';
 export 'package:google_sign_in/google_sign_in.dart';
-export 'package:firebase_example/core/untils/call_items.dart';
+export 'package:firebase_example/core/untils/project_items.dart';
 
 export 'package:firebase_example/core/untils/usecase/usecase.dart';
 export 'package:equatable/equatable.dart';

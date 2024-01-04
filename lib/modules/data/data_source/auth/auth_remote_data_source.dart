@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_example/core/untils/imports.dart';
 
-
 abstract class AuthRemoteDataSource {
   ResultFuture register({
     required String name,
@@ -12,7 +11,6 @@ abstract class AuthRemoteDataSource {
     required String email,
     required String password,
   });
-  ResultFuture authWithGoogle();
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
@@ -56,8 +54,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       });
 
       ZegoUIKitPrebuiltCallInvitationService().init(
-        appID: CallItems.appId /*input your AppID*/,
-        appSign: CallItems.appSignIn /*input your AppSign*/,
+        appID: ProjectItems.appId /*input your AppID*/,
+        appSign: ProjectItems.appSignIn /*input your AppSign*/,
         userID: _auth.currentUser!.uid,
         userName: _auth.currentUser!.displayName!,
         plugins: [
@@ -69,36 +67,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     } catch (e) {
       return Left(
         ApiFailure(message: e.toString(), statusCode: 500),
-      );
-    }
-  }
-
-  @override
-  ResultFuture authWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-      await _auth.signInWithCredential(credential);
-
-      await _firestore.collection('users').add({
-        'uid': _auth.currentUser!.uid,
-        'name': _auth.currentUser!.displayName,
-        'email': _auth.currentUser!.email,
-        "password": _auth.currentUser!.email,
-        "status": false,
-      });
-
-      return const Right(null);
-    } catch (e) {
-      return left(
-        ApiFailure(message: '$e', statusCode: 505),
       );
     }
   }

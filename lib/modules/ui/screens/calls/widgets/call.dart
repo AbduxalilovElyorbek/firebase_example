@@ -16,9 +16,9 @@ class Call extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZegoUIKitPrebuiltCall(
-      appID: CallItems
+      appID: ProjectItems
           .appId, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
-      appSign: CallItems
+      appSign: ProjectItems
           .appSignIn, // Fill in the appSign that you get from ZEGOCLOUD Admin Console.
       userID: userId,
       userName: userName,

@@ -4,7 +4,7 @@ class ChatItem extends StatelessWidget {
   const ChatItem({
     super.key,
     required this.name,
-    required this.message,
+    this.message,
     required this.uid,
     this.image,
     this.isOnline,
@@ -12,7 +12,7 @@ class ChatItem extends StatelessWidget {
 
   final String uid;
   final String name;
-  final String message;
+  final String? message;
 
   final String? image;
   final bool? isOnline;
@@ -54,26 +54,28 @@ class ChatItem extends StatelessWidget {
                 Text(
                   name,
                   style: TextStyle(
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 const SizedBox(
                   height: 6,
                 ),
-                SizedBox(
-                  width: 100,
-                  child: Text(
-                    message,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    softWrap: false,
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
+                message != null
+                    ? SizedBox(
+                        width: 100.w,
+                        child: Text(
+                          message!,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: false,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      )
+                    : Container(),
               ],
             ),
             const Spacer(),

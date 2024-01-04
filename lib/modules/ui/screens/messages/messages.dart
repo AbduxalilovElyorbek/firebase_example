@@ -14,11 +14,6 @@ class _MessagesPageState extends State<MessagesPage> {
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: dark,
@@ -88,21 +83,21 @@ class _MessagesPageState extends State<MessagesPage> {
                   )),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 14,
+                  SizedBox(
+                    height: 14.h,
                   ),
                   Center(
                     child: Container(
-                      height: 3,
-                      width: 30,
+                      height: 3.h,
+                      width: 30.w,
                       decoration: BoxDecoration(
                         color: lightGrey,
                         borderRadius: BorderRadius.circular(100),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: 12.h,
                   ),
                   const Expanded(
                     child: ChatList(),

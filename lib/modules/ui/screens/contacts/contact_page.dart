@@ -9,13 +9,13 @@ class ContactsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: dark,
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 100.h,
         centerTitle: true,
         backgroundColor: transparent,
         title: Column(
           children: [
-            const SizedBox(
-              height: 17,
+             SizedBox(
+              height: 16.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,38 +48,36 @@ class ContactsPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Expanded(
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              color: white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              )),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 14,
-              ),
-              Center(
-                child: Container(
-                  height: 3,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: lightGrey,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 14,
+            ),
+            Center(
+              child: Container(
+                height: 3,
+                width: 30,
+                decoration: BoxDecoration(
+                  color: lightGrey,
+                  borderRadius: BorderRadius.circular(100),
                 ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              const Expanded(
-                child: Contacts(),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            const Expanded(
+              child: Contacts(),
+            ),
+          ],
         ),
       ),
     );

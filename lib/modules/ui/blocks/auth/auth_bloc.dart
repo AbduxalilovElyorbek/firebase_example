@@ -15,10 +15,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   })  : _registerUsecase = registerUsecase,
         _loginUsecase = loginUsecase,
         super(AuthInitial()) {
-    on<RegisterEvent>(_registerHandler);
-    on<LoginEvent>(_loginHandler);
+    on<RegisterEvent>(
+      _registerHandler,
+    );
+    on<LoginEvent>(
+      _loginHandler,
+    );
 
-    on<AuthWithGoogle>((event, emit) async {});
+    on<AuthWithGoogle>((event, emit) {
+      signInWithGoogle;
+    });
+  }
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   FutureOr<void> _registerHandler(

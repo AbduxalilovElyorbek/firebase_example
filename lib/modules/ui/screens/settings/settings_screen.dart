@@ -5,11 +5,13 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _user = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       backgroundColor: dark,
       appBar: AppBar(
         backgroundColor: transparent,
-        toolbarHeight: 100,
+        toolbarHeight: 80.h,
         centerTitle: true,
         title: Text(
           "Settings",
@@ -31,30 +33,34 @@ class SettingsScreen extends StatelessWidget {
               )),
           child: Column(
             children: [
-              const SizedBox(
-                height: 14,
+              SizedBox(
+                height: 14.h,
               ),
               Center(
                 child: Container(
-                  height: 3,
-                  width: 30,
+                  height: 3.h,
+                  width: 30.w,
                   decoration: BoxDecoration(
                     color: lightGrey,
                     borderRadius: BorderRadius.circular(100),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 24,
+                  horizontal: 24.w,
                 ),
-                child: SettingsProfile(),
+                child: SettingsProfile(
+                  title: _user.displayName!,
+                  subtitle: _user.email,
+                  image: '',
+                ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 10.h,
               ),
               Divider(
                 color: lightWhite,

@@ -41,8 +41,8 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
           ),
         );
         await ZegoUIKitPrebuiltCallInvitationService().init(
-          appID: CallItems.appId /*input your AppID*/,
-          appSign: CallItems.appSignIn /*input your AppSign*/,
+          appID: ProjectItems.appId /*input your AppID*/,
+          appSign: ProjectItems.appSignIn /*input your AppSign*/,
           userID: FirebaseAuth.instance.currentUser!.uid,
           userName: FirebaseAuth.instance.currentUser!.displayName!,
           plugins: [

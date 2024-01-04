@@ -1,6 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
 
-
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
@@ -11,11 +10,11 @@ void main() async {
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: kIsWeb || Platform.isAndroid
-              ? const FirebaseOptions(
-                  apiKey: "AIzaSyCKm0Q7MLqSXxQ6VOIMAqMGrNvHNBJqOXQ",
-                  appId: "1:538512845950:android:5abf11d78184a280197c2f",
-                  messagingSenderId: "538512845950",
-                  projectId: "example-app-3db94",
+              ? FirebaseOptions(
+                  apiKey: ProjectItems.apiKey,
+                  appId: ProjectItems.id,
+                  messagingSenderId: ProjectItems.messagingSenderId,
+                  projectId: ProjectItems.projectId,
                 )
               : null,
         )
@@ -67,6 +66,10 @@ class _MyAppState extends State<MyApp> {
           MessagesPage.routeName: (context) => BlocProvider(
                 create: (context) => sl<MessagesBloc>(),
                 child: const MessagesPage(),
+              ),
+          OnboardingPage.routeName: (context) => BlocProvider(
+                create: (context) => sl<AuthBloc>(),
+                child: const OnboardingPage(),
               ),
           SignUpPage.routeName: (context) => BlocProvider(
                 create: (context) => sl<AuthBloc>(),

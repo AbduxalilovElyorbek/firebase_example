@@ -37,7 +37,6 @@ class ChatList extends StatelessWidget {
                   child: ChatItem(
                     uid: doc['senderUid'],
                     name: "Saved",
-                    message: '',
                     isOnline: false,
                   ),
                 );

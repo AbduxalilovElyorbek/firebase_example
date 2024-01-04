@@ -22,8 +22,8 @@ class Contacts extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: data.length,
             separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 10,
+              return SizedBox(
+                height: 10.h,
               );
             },
             itemBuilder: (context, index) {
@@ -33,8 +33,11 @@ class Contacts extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    index == 1
-                        ?  Text(
+                    SizedBox(
+                      height: 24.h,
+                    ),
+                    index == 0
+                        ? Text(
                             "My Contact",
                             style: TextStyle(
                               fontSize: 16.sp,
@@ -42,8 +45,8 @@ class Contacts extends StatelessWidget {
                             ),
                           )
                         : Container(),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 20.h,
                     ),
                     Text(
                       doc['senderName'][0],
@@ -52,6 +55,9 @@ class Contacts extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: dark,
                       ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
                     ),
                     ContactItemWidget(
                       userName: doc['senderName'],
