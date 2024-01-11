@@ -8,7 +8,7 @@ class Calls extends StatelessWidget {
     final collection =
         FirebaseFirestore.instance.collection('chats').snapshots();
 
-    return Expanded(
+    return SizedBox(
       child: StreamBuilder<QuerySnapshot>(
         stream: collection,
         builder: (context, snapshot) {

@@ -6,6 +6,9 @@ abstract class AuthRemoteDataSource {
     required String name,
     required String email,
     required String password,
+    String? bio,
+    String? profileImage,
+    String? phoneNumber,
   });
   ResultFuture login({
     required String email,
@@ -39,6 +42,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String name,
     required String email,
     required String password,
+
+    String? bio,
+    String? profileImage,
+    String? phoneNumber,
   }) async {
     try {
       final UserCredential _user = await _auth.createUserWithEmailAndPassword(
@@ -50,7 +57,9 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         'uid': _auth.currentUser!.uid,
         'name': name,
         'email': email,
+        
         "password": password,
+        "bio": bio,
       });
 
       ZegoUIKitPrebuiltCallInvitationService().init(

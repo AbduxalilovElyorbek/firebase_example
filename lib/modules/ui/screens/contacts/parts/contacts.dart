@@ -19,7 +19,7 @@ class Contacts extends StatelessWidget {
         if (snapshot.hasData && snapshot.data != null) {
           var data = snapshot.data!.docs;
           return ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.zero,
             itemCount: data.length,
             separatorBuilder: (context, index) {
               return SizedBox(
@@ -33,21 +33,6 @@ class Contacts extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 24.h,
-                    ),
-                    index == 0
-                        ? Text(
-                            "My Contact",
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 20.h,
-                    ),
                     Text(
                       doc['senderName'][0],
                       style: TextStyle(

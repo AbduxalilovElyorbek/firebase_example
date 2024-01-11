@@ -1,5 +1,4 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInPage extends StatefulWidget {
   static const String routeName = "sign/in";
@@ -13,13 +12,15 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-  final _formKey = GlobalKey<FormState>();
+  late final _formKey;
 
   @override
   void initState() {
     _emailController = TextEditingController();
+
     _passwordController = TextEditingController();
-    // _globalKey = ;
+    _formKey = GlobalKey<FormState>();
+
     super.initState();
   }
 

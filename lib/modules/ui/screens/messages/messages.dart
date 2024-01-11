@@ -36,7 +36,9 @@ class _MessagesPageState extends State<MessagesPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SearchPage(),
+                        builder: (context) => const SearchPage(
+                          isContacts: false,
+                        ),
                       ),
                     );
                   },

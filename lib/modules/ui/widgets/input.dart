@@ -29,9 +29,13 @@ class InputWidget extends StatelessWidget {
           height: 5,
         ),
         TextFormField(
+          inputFormatters: [
+            FilteringTextInputFormatter.deny(RegExp(r'\s')), // Deny spaces
+          ],
           controller: controller,
           obscureText: isPassword ?? false,
           decoration: InputDecoration(
+            isDense: true,
             border: UnderlineInputBorder(
               borderSide: BorderSide(
                 color: lineColor,

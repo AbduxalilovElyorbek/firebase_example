@@ -1,6 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
 
-
 class ContactsPage extends StatelessWidget {
   const ContactsPage({super.key});
 
@@ -14,13 +13,15 @@ class ContactsPage extends StatelessWidget {
         backgroundColor: transparent,
         title: Column(
           children: [
-             SizedBox(
+            SizedBox(
               height: 16.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(),
+                Container(
+                  width: 50.w,
+                ),
                 Text(
                   "Contacts",
                   style: TextStyle(
@@ -35,7 +36,9 @@ class ContactsPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SearchPage(),
+                        builder: (context) => const SearchPage(
+                          isContacts: true,
+                        ),
                       ),
                     );
                   },
@@ -50,13 +53,18 @@ class ContactsPage extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          horizontal: 24.w,
+        ),
         decoration: BoxDecoration(
-            color: white,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
-            ),),
+          color: white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+          ),
+        ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 14,
@@ -71,8 +79,18 @@ class ContactsPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 12,
+            SizedBox(
+              height: 24.h,
+            ),
+            Text(
+              "My Contact",
+              style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(
+              height: 20.h,
             ),
             const Expanded(
               child: Contacts(),

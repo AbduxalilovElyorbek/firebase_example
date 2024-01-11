@@ -34,12 +34,12 @@ class ContactItemWidget extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(
-                width: 12,
+              SizedBox(
+                width: 12.w,
               ),
               Text(
                 userName,
-                style:  TextStyle(
+                style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                 ),

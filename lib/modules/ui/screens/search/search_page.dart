@@ -1,8 +1,11 @@
 import 'package:firebase_example/core/untils/imports.dart';
-import 'package:firebase_example/modules/ui/screens/search/parts/search_list.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  final bool isContacts;
+  const SearchPage({
+    super.key,
+    required this.isContacts,
+  });
   static const routeName = "search/screen";
 
   @override
@@ -31,54 +34,63 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 100,
-        title: Expanded(
-          child: TextField(
-            onChanged: (value) {
-              setState(() {
-                searchText = _searchController.text;
-              });
-            },
-            controller: _searchController,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 14,
+        title: TextField(
+          onChanged: (value) {
+            setState(() {
+              searchText = _searchController.text;
+            });
+          },
+          onEditingComplete: () {
+            searchText = _searchController.text;
+            setState(() {});
+          },
+          controller: _searchController,
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 14,
+            ),
+            hintText: 'Search...',
+            fillColor: lightWhite,
+            filled: true,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(10),
+              child: SvgIcon(
+                iconName: AppIcons.close,
+                color: grey,
+                size: 24,
+                function: () {
+                  _searchController.clear();
+                  searchText = _searchController.text;
+                    
+                  setState(() {});
+                },
               ),
-              hintText: 'Search...',
-              fillColor: lightWhite,
-              filled: true,
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              suffixIcon: Padding(
-                padding: const EdgeInsets.all(10),
-                child: SvgIcon(
-                  iconName: AppIcons.close,
-                  color: grey,
-                  size: 24,
-                  function: () {
-                    _searchController.clear();
-                    setState(() {});
-                  },
-                ),
-              ),
-              prefixIcon: Padding(
-                padding: const EdgeInsets.all(10),
-                child: SvgIcon(
-                  iconName: AppIcons.searchIcon,
-                  color: grey,
-                  size: 24,
-                ),
+            ),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.all(10),
+              child: SvgIcon(
+                iconName: AppIcons.searchIcon,
+                color: grey,
+                size: 24,
               ),
             ),
           ),
         ),
       ),
-      body: Expanded(
-        child: SearchList(
-          searchName: searchText,
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SearchList(
+              searchText: searchText,
+              isContacts: widget.isContacts,
+            ),
+          ),
+        ],
       ),
     );
   }

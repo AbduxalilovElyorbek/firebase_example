@@ -19,7 +19,9 @@ class CallsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(),
+                Container(
+                  width: 50.w,
+                ),
                 Text(
                   "Calls",
                   style: TextStyle(
@@ -34,11 +36,13 @@ class CallsPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SearchPage(),
+                        builder: (context) => const SearchPage(
+                          isContacts: true,
+                        ),
                       ),
                     );
                   },
-                ),
+                )
               ],
             ),
             const SizedBox(
@@ -47,39 +51,43 @@ class CallsPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Expanded(
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              color: white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              )),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 14,
-              ),
-              Center(
-                child: Container(
-                  height: 3,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: lightGrey,
-                    borderRadius: BorderRadius.circular(100),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  )),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 14.h,
                   ),
-                ),
+                  Center(
+                    child: Container(
+                      height: 3.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                        color: lightGrey,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  const Expanded(
+                    child: Calls(),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              const Expanded(
-                child: Calls(),
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

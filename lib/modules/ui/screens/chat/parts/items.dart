@@ -3,11 +3,34 @@ import 'package:firebase_example/core/untils/imports.dart';
 class ChatItems extends StatelessWidget {
   const ChatItems({super.key});
 
-  static String imageUrl = '';
-  static String imagePath = '';
-
   @override
   Widget build(BuildContext context) {
+    late File imageFile;
+    late String imageUrl;
+
+    Future getImage() async {
+      ImagePicker _image = ImagePicker();
+
+      await _image.pickImage(source: ImageSource.camera).then((value) {
+        if (value != null) {
+          imageFile = File(value.path);
+        }
+      });
+    }
+
+    Future uploadImage() async {
+      String fileName = const Uuid().v1();
+
+      var ref =
+          FirebaseStorage.instance.ref().child('images').child('$fileName.jpg');
+
+      var send = await ref.putFile(imageFile);
+
+      imageUrl = await send.ref.getDownloadURL();
+
+      print(imageUrl);
+    }
+
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -25,15 +48,15 @@ class ChatItems extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButtonWidget(
-                icon: AppIcons.close,
-                color: transparent,
-                isBordered: true,
-                function: () {
+              IconButton(
+                onPressed: () {
                   Navigator.pop(context);
                 },
+                icon: SvgPicture.asset(
+                  AppIcons.close,
+                ),
               ),
-               Text(
+              Text(
                 "Share Content",
                 style: TextStyle(
                   fontSize: 16.sp,
@@ -55,26 +78,8 @@ class ChatItems extends StatelessWidget {
             icon: AppIcons.camItem,
             title: "Camera",
             function: () async {
-              final image = ImagePicker();
-              XFile? file = await image.pickImage(
-                source: ImageSource.camera,
-              );
-
-              Reference ref = FirebaseStorage.instance.ref();
-              Reference imageRef = ref.child('images/');
-
-              Reference upload = imageRef.child(file!.name);
-
-              try {
-                await upload.putFile(
-                  File(file.path),
-                );
-
-                print(file.path + '   path');
-                imageUrl = await upload.getDownloadURL();
-
-                imagePath = file.path;
-              } catch (e) {}
+              await getImage();
+              await uploadImage();
             },
           ),
           const SizedBox(
@@ -87,24 +92,7 @@ class ChatItems extends StatelessWidget {
           Item(
             icon: AppIcons.medItem,
             title: "Photos",
-            function: () async {
-              final image = ImagePicker();
-              XFile? file = await image.pickImage(
-                source: ImageSource.gallery,
-              );
-
-              Reference ref = FirebaseStorage.instance.ref();
-              Reference imageRef = ref.child('images/');
-
-              Reference upload = imageRef.child(file!.name);
-
-              try {
-                upload.putFile(
-                  File(file.path),
-                );
-                imagePath = file.path;
-              } catch (e) {}
-            },
+            function: () async {},
           ),
           const SizedBox(
             height: 10,
@@ -116,23 +104,7 @@ class ChatItems extends StatelessWidget {
           Item(
             icon: AppIcons.medItem,
             title: "Videos",
-            function: () async {
-              final image = ImagePicker();
-              XFile? file = await image.pickVideo(
-                source: ImageSource.gallery,
-              );
-
-              Reference ref = FirebaseStorage.instance.ref();
-              Reference imageRef = ref.child('videos/');
-
-              Reference upload = imageRef.child(file!.name);
-
-              try {
-                await upload.putFile(
-                  File(file.path),
-                );
-              } catch (e) {}
-            },
+            function: () async {},
           ),
         ],
       ),

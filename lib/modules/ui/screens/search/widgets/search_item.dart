@@ -9,36 +9,29 @@ class SearchItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 24,
         vertical: 8,
       ),
-      child: SizedBox(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Avatar(
-                  user: userName,
-                  size: 52,
-                  function: () {},
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                Text(
-                  userName,
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
+      child: Row(
+        children: [
+          Avatar(
+            user: userName,
+            size: 52.sp,
+            function: () {},
+          ),
+          SizedBox(
+            width: 12.w,
+          ),
+          Text(
+            userName,
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

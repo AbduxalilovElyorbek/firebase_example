@@ -86,3 +86,9 @@ export 'package:firebase_example/modules/ui/screens/profile/widgets/item.dart';
 
 export 'package:firebase_example/modules/ui/screens/settings/widgets/settings_part.dart';
 
+export 'package:flutter/services.dart';
+
+export 'package:firebase_example/modules/ui/screens/search/parts/search_list.dart';
+export 'package:firebase_example/modules/ui/screens/search/widgets/search_item.dart';
+
+export 'package:uuid/uuid.dart';
