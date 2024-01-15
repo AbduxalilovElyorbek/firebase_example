@@ -31,13 +31,14 @@ class ChatList extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, Chat.routeName, arguments: {
                       'getterUid': doc['senderUid'],
-                      'name': "Saved",
+                      'name': doc['senderName'],
+                      'email': doc['email'] ?? '',
+                      'number': doc['phoneNumber'] ?? '',
                     });
                   },
                   child: ChatItem(
                     uid: doc['senderUid'],
                     name: "Saved",
-                    
                     isOnline: false,
                   ),
                 );
@@ -47,6 +48,8 @@ class ChatList extends StatelessWidget {
                   Navigator.pushNamed(context, Chat.routeName, arguments: {
                     'getterUid': doc['senderUid'],
                     'name': doc['senderName'],
+                    'email': doc['email'] ?? '',
+                    'number': doc['phoneNumber'] ?? '',
                   });
                 },
                 child: ChatItem(

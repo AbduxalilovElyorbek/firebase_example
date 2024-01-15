@@ -24,7 +24,7 @@ class ChatItem extends StatelessWidget {
         horizontal: 24.w,
       ),
       child: SizedBox(
-        height: 52.h,
+        height: 55.h,
         width: 320.w,
         child: Row(
           children: [

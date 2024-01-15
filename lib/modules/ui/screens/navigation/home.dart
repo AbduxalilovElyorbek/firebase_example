@@ -1,5 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
-
+import 'package:firebase_example/modules/ui/blocks/profile/profile_bloc.dart';
 
 class NavigationBarScreen extends StatefulWidget {
   static const String routeName = "navigation/screen";
@@ -18,7 +18,10 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
     const MessagesPage(),
     const CallsPage(),
     const ContactsPage(),
-    const SettingsScreen(),
+    BlocProvider(
+      create: (context) => ProfileBloc(),
+      child: const SettingsScreen(),
+    ),
   ];
 
   @override
@@ -42,7 +45,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
           fontWeight: FontWeight.w400,
         ),
         unselectedItemColor: grey,
-        selectedLabelStyle:  TextStyle(
+        selectedLabelStyle: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w400,
         ),

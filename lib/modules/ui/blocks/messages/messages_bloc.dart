@@ -30,6 +30,8 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
           {
             'senderUid': FirebaseAuth.instance.currentUser!.uid,
             'senderName': FirebaseAuth.instance.currentUser!.displayName,
+            'email': FirebaseAuth.instance.currentUser!.email,
+            'number': FirebaseAuth.instance.currentUser!.phoneNumber,
             'getterUid': event.getterUid,
             'getterName': event.getterName,
             'uid': event.getterUid + FirebaseAuth.instance.currentUser!.uid,
@@ -50,6 +52,30 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
           ],
         );
       } catch (e) {}
+    });
+
+    on<SendImage>((event, emit) async {
+      try {
+        final picker = ImagePicker();
+        final pickedFile = await picker.pickImage(
+          source: event.isCamera ? ImageSource.camera : ImageSource.gallery,
+        );
+
+        if (pickedFile != null) {
+          final storageRef =
+              FirebaseStorage.instance.ref().child('images/${pickedFile.name}');
+
+          final uploadTask = storageRef.putFile(File(pickedFile.path));
+
+          final snapshot = await uploadTask.whenComplete(() => null);
+          final downloadUrl = await snapshot.ref.getDownloadURL();
+
+          print('Image uploaded to: $downloadUrl');
+        }
+      } on FirebaseException catch (e) {
+        // Handle any errors
+        print(e);
+      }
     });
   }
 }

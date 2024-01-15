@@ -5,48 +5,65 @@ class SettingsProfile extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
+    required this.function,
     this.subtitle,
   });
   final String image;
   final String title;
   final String? subtitle;
+  final VoidCallback function;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Avatar(
-          size: 60,
-          function: () {},
-          image: image != '' ? image : null,
-          user: title[0],
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Row(
           children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-              ),
+            Avatar(
+              size: 60,
+              function: () {},
+              image: image != '' ? image : null,
+              user: title[0],
             ),
-            SizedBox(
-              height: 6.h,
+            const SizedBox(
+              width: 12,
             ),
-            subtitle != null
-                ? Text(
-                    subtitle!,
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  )
-                : Container(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: 6.h,
+                ),
+                subtitle != null
+                    ? Text(
+                        subtitle!,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    : Container(),
+              ],
+            ),
           ],
+        ),
+        IconButton(
+          onPressed: function,
+          icon: SvgPicture.asset(
+            AppIcons.edit,
+            colorFilter: ColorFilter.mode(
+              grey,
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ],
     );

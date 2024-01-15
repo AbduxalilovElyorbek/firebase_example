@@ -18,8 +18,8 @@ class Calls extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               itemCount: data.length,
               separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 10,
+                return SizedBox(
+                  height: 10.h,
                 );
               },
               itemBuilder: (context, index) {
@@ -30,6 +30,8 @@ class Calls extends StatelessWidget {
                   return CallItemWidget(
                     userUid: doc['senderUid'],
                     userName: doc['senderName'],
+                    userEmail: doc[''],
+                    userNumber: doc[''],
                   );
                 }
                 return const SizedBox();

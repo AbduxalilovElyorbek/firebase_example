@@ -6,8 +6,8 @@ class Profiles extends StatelessWidget {
   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
       .collection('users')
       .where(
-        'name',
-        isNotEqualTo: FirebaseAuth.instance.currentUser!.displayName,
+        'uid',
+        isNotEqualTo: FirebaseAuth.instance.currentUser!.uid,
       )
       .snapshots();
 
@@ -25,7 +25,7 @@ class Profiles extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: data.length,
             separatorBuilder: (context, index) {
-              return  SizedBox(
+              return SizedBox(
                 width: 12.w,
               );
             },
@@ -38,6 +38,8 @@ class Profiles extends StatelessWidget {
                   Navigator.pushNamed(context, Chat.routeName, arguments: {
                     'name': document['name'],
                     'getterUid': document['uid'],
+                    'email': document['email'] ?? '',
+                    'number': document['phoneNumber'] ?? '',
                   });
                 },
                 child: ProfileItem(

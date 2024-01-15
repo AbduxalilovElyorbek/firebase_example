@@ -42,4 +42,6 @@ class AppIcons {
   static String data = 'assets/icons/data.svg';
   static String invite = 'assets/icons/invite.svg';
   static String messageIcon = 'assets/icons/message_icon.svg';
+ 
+  static String edit = 'assets/icons/edit.svg';
 }

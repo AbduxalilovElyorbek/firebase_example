@@ -1,4 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
+import 'package:firebase_example/modules/ui/blocks/profile/profile_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -16,6 +17,9 @@ void setUp() {
     )
     ..registerFactory(
       () => MessagesBloc(),
+    )
+    ..registerFactory(
+      () => ProfileBloc(),
     )
 
     //data source

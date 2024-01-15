@@ -57,6 +57,8 @@ dependencies:
   firebase_storage: ^11.5.6
   image_picker: ^1.0.5
   uuid: ^4.2.2
+  record_mp3: ^3.0.0
+  audioplayers: ^5.2.1
   
 
 dev_dependencies:

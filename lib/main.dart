@@ -1,4 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
+import 'package:firebase_example/modules/ui/blocks/profile/profile_bloc.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -58,7 +59,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
@@ -86,6 +87,14 @@ class _MyAppState extends State<MyApp> {
           Chat.routeName: (context) => BlocProvider(
                 create: (context) => sl<MessagesBloc>(),
                 child: const Chat(),
+              ),
+          SettingsScreen.routeName: (context) => BlocProvider(
+                create: (context) => sl<ProfileBloc>(),
+                child: const SettingsScreen(),
+              ),
+          ChatItems.routeName: (context) => BlocProvider(
+                create: (context) => sl<MessagesBloc>(),
+                child: const ChatItems(),
               ),
         },
         navigatorKey: navigatorKey,

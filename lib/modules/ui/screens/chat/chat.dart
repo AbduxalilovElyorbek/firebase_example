@@ -1,6 +1,5 @@
 import 'package:firebase_example/core/untils/imports.dart';
 
-
 class Chat extends StatefulWidget {
   static const routeName = "chat/screen";
 
@@ -14,8 +13,11 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   late TextEditingController _messageController;
-  late String name;
+
   late String getterUid;
+  late String name;
+  late String email;
+  late String number;
 
   late ScrollController _controller;
 
@@ -29,7 +31,7 @@ class _ChatState extends State<Chat> {
     if (_controller.hasClients) {
       _controller.animateTo(
         _controller.position.maxScrollExtent,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(microseconds: 200),
         curve: Curves.fastOutSlowIn,
       );
     }
@@ -46,8 +48,10 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     final Map argument = ModalRoute.of(context)!.settings.arguments as Map;
 
-    name = argument['name'];
     getterUid = argument['getterUid'];
+    name = argument['name'];
+    email = argument['email'];
+    number = argument['number'];
 
     return Scaffold(
       appBar: AppBar(
@@ -62,54 +66,56 @@ class _ChatState extends State<Chat> {
             AppIcons.back,
           ),
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ChatProfile(
-              isActive: false,
-              letter: name,
-              function: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProfilePage(
-                      userName: name,
-                      userEmail: 'user.email!',
-                      userNumber: 'user.phoneNumber',
-                      uid: getterUid,
+        title: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfilePage(
+                  userName: name,
+                  userEmail: email,
+                  userNumber: number,
+                  uid: getterUid,
+                ),
+              ),
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ChatProfile(
+                isActive: false,
+                letter: name,
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      color: dark,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                );
-              },
-            ),
-            const SizedBox(
-              width: 12,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    color: dark,
-                    fontWeight: FontWeight.w500,
+                  const SizedBox(
+                    height: 6,
                   ),
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                Text(
-                  "Active now",
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: grey,
-                    fontWeight: FontWeight.w400,
+                  Text(
+                    "Active now",
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: grey,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
         actions: [
           IconButton(
@@ -243,6 +249,13 @@ class _ChatState extends State<Chat> {
                                 iconName: AppIcons.camera,
                                 color: dark,
                                 size: 24,
+                                function: () {
+                                  context.read<MessagesBloc>().add(
+                                        SendImage(
+                                          isCamera: true,
+                                        ),
+                                      );
+                                },
                               ),
                               const SizedBox(
                                 width: 12,

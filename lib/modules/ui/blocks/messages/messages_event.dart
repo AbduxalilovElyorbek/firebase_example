@@ -17,3 +17,9 @@ class SendMessage extends MessagesEvent {
         getterUid,
       ];
 }
+
+class SendImage extends MessagesEvent {
+  final bool isCamera;
+
+  SendImage({required this.isCamera});
+}

@@ -18,7 +18,7 @@ class ItemProfile extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              color: lightWhite,
+              color: grey,
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
